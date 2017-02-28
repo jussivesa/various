@@ -41,38 +41,39 @@
                                         </connections>
                                     </button>
                                     <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="cwp-yT-cjb">
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="cwp-yT-cjb" secondAttribute="height" multiplier="1:1" id="P4C-en-Ffg"/>
-                                            <constraint firstAttribute="width" secondItem="cwp-yT-cjb" secondAttribute="height" multiplier="1:1" id="ezi-RG-PLn"/>
                                         </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="NZa-nT-i3w" appends="YES" id="BbP-mj-KAV"/>
+                                        </connections>
                                     </imageView>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="hH2-kc-Qq3" secondAttribute="trailing" id="MLN-rH-ueA"/>
-                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="0hc-Eh-bKn" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="373-do-Bie"/>
-                            <constraint firstItem="0hc-Eh-bKn" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" constant="10" id="EG5-aM-99G"/>
-                            <constraint firstItem="0hc-Eh-bKn" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="F3P-Fg-NiV"/>
-                            <constraint firstItem="0hc-Eh-bKn" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="J11-KM-6g7"/>
-                            <constraint firstItem="0hc-Eh-bKn" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="Oef-2I-Gt8"/>
-                            <constraint firstItem="0hc-Eh-bKn" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="QQh-aJ-p4B"/>
-                            <constraint firstAttribute="trailing" secondItem="0hc-Eh-bKn" secondAttribute="trailing" id="Ws0-0N-JxX"/>
-                            <constraint firstItem="0hc-Eh-bKn" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="10" id="iyl-gc-svT"/>
-                            <constraint firstItem="0hc-Eh-bKn" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="pSb-O3-MDt"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="0hc-Eh-bKn" secondAttribute="trailing" id="q1q-dm-CNA"/>
-                            <constraint firstItem="0hc-Eh-bKn" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="xWH-DP-VJF"/>
+                            <constraint firstItem="0hc-Eh-bKn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Gh1-Pe-yNL"/>
+                            <constraint firstItem="0hc-Eh-bKn" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="16" id="R5w-4y-Cfc"/>
+                            <constraint firstItem="0hc-Eh-bKn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="T98-qA-yUN"/>
+                            <constraint firstItem="0hc-Eh-bKn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ZCs-Ke-sfp"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="0hc-Eh-bKn" secondAttribute="trailing" constant="20" id="qlO-aK-M3Z"/>
+                            <constraint firstItem="0hc-Eh-bKn" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="yJs-LY-eEc"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="foodNameLabel" destination="fpV-Jv-NQw" id="OPT-Mk-19m"/>
                         <outlet property="nameTextField" destination="hH2-kc-Qq3" id="nci-AL-Flp"/>
+                        <outlet property="photoImageView" destination="cwp-yT-cjb" id="z6w-s1-YoO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="NZa-nT-i3w">
+                    <connections>
+                        <action selector="selectImageFromPhotoLibrary:" destination="BYZ-38-t0r" id="r4K-zU-6zr"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="69.599999999999994" y="62.518740629685162"/>
         </scene>
