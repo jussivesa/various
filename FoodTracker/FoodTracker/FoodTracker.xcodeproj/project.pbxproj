@@ -13,6 +13,7 @@
 		F13EB53F1E61776700E8D747 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F13EB53E1E61776700E8D747 /* Assets.xcassets */; };
 		F13EB5421E61776700E8D747 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F13EB5401E61776700E8D747 /* LaunchScreen.storyboard */; };
 		F13EB54D1E61776700E8D747 /* FoodTrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13EB54C1E61776700E8D747 /* FoodTrackerUITests.swift */; };
+		F13EB5581E65F7D500E8D747 /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13EB5571E65F7D500E8D747 /* RatingControl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		F13EB5481E61776700E8D747 /* FoodTrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FoodTrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F13EB54C1E61776700E8D747 /* FoodTrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodTrackerUITests.swift; sourceTree = "<group>"; };
 		F13EB54E1E61776700E8D747 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F13EB5571E65F7D500E8D747 /* RatingControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 				F13EB5371E61776600E8D747 /* AppDelegate.swift */,
 				F13EB5391E61776600E8D747 /* ViewController.swift */,
 				F13EB53B1E61776600E8D747 /* Main.storyboard */,
+				F13EB5571E65F7D500E8D747 /* RatingControl.swift */,
 				F13EB53E1E61776700E8D747 /* Assets.xcassets */,
 				F13EB5401E61776700E8D747 /* LaunchScreen.storyboard */,
 				F13EB5431E61776700E8D747 /* Info.plist */,
@@ -199,6 +202,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F13EB5581E65F7D500E8D747 /* RatingControl.swift in Sources */,
 				F13EB53A1E61776600E8D747 /* ViewController.swift in Sources */,
 				F13EB5381E61776600E8D747 /* AppDelegate.swift in Sources */,
 			);

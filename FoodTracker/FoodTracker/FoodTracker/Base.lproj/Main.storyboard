@@ -20,7 +20,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="0hc-Eh-bKn">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="0hc-Eh-bKn" customClass="RatingControll" customModule="FoodTracker" customModuleProvider="target">
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Track what you eat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fpV-Jv-NQw" userLabel="Food Name Label">
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
@@ -51,13 +51,19 @@
                                     </imageView>
                                 </subviews>
                             </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kp8-d5-6uN">
+                                <frame key="frameInset" minX="36" minY="448" width="200" height="110"/>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="0hc-Eh-bKn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Gh1-Pe-yNL"/>
                             <constraint firstItem="0hc-Eh-bKn" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="16" id="R5w-4y-Cfc"/>
                             <constraint firstItem="0hc-Eh-bKn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="T98-qA-yUN"/>
+                            <constraint firstItem="kp8-d5-6uN" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="UQL-no-zVF"/>
                             <constraint firstItem="0hc-Eh-bKn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ZCs-Ke-sfp"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="kp8-d5-6uN" secondAttribute="trailing" constant="20" id="c1I-qr-CwW"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="kp8-d5-6uN" secondAttribute="trailing" constant="20" id="lf9-vx-4hX"/>
                             <constraint firstAttribute="trailingMargin" secondItem="0hc-Eh-bKn" secondAttribute="trailing" constant="20" id="qlO-aK-M3Z"/>
                             <constraint firstItem="0hc-Eh-bKn" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="yJs-LY-eEc"/>
                         </constraints>
