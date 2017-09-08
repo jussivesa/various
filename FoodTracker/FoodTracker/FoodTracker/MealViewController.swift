@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MealViewController.swift
 //  FoodTracker
 //
 //  Created by Jussi Vesa on 25/02/2017.
@@ -7,19 +7,29 @@
 //
 
 import UIKit
+import os.log // the unified logging system gives you more control over when messages appear and how they are saved.
 
-class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     //MARK: Properties
-    @IBOutlet weak var foodNameLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var photoImageView: UIImageView!
+    @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet weak var ratingControl: RatingControl!
+    
+    /*
+     This value is either passed by `MealTableViewController` in `prepare(for:sender:)`
+     or constructed as part of adding a new meal.
+     */
+    var meal: Meal?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Handle user input using app delegate callbacks
         nameTextField.delegate = self
         
+        // Enable the Save button only if the text field has a valid Meal name.
+        updateSaveButtonState()
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,9 +44,17 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
         return true
     }
     
+
     func textFieldDidEndEditing(_ textField: UITextField) {
-        foodNameLabel.text = textField.text
+        // foodNameLabel.text = textField.text // not in use anymore
+        
+        // Disable the Save button while editing.
+        saveButton.isEnabled = false
+        // Update state
+        updateSaveButtonState()
+        navigationItem.title = textField.text
     }
+ 
     
     //MARK: UIImagePickerControllerDelegate
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -74,11 +92,40 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
         present(imagePickerController, animated: true, completion: nil)
     }
     
-    @IBAction func setDefaultLabelText(_ sender: UIButton) {
-        foodNameLabel.text = "Default label text"
+    //MARK: Navigation
+    
+    @IBOutlet weak var cancel: UIBarButtonItem!
+    @IBAction func cancel(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
     }
-
-
+    
+    
+    
+    // This method lets you configure a view controller before it's presented.
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        // Configure the destination view controller only when the save button is pressed.
+        guard let button = sender as? UIBarButtonItem, button === saveButton else {
+            os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
+            return
+        }
+        // nil coalescing operator (??) in the name line. The nil coalescing operator is used to return the value of an optional if the optional has a value, or return a default value otherwise
+        let name = nameTextField.text ?? ""
+        let photo = photoImageView.image
+        let rating = ratingControl.rating
+        
+        // Set the meal to be passed to MealTableViewController after the unwind segue.
+        meal = Meal(name: name, photo: photo, rating: rating)
+    }
+    
+    //MARK: Private Methods
+    
+    private func updateSaveButtonState() {
+        // Disable the Save button if the text field is empty.
+        let text = nameTextField.text ?? ""
+        saveButton.isEnabled = !text.isEmpty
+    }
 
 }
 

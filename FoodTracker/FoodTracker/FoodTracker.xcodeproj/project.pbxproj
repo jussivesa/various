@@ -8,12 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		F13EB5381E61776600E8D747 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13EB5371E61776600E8D747 /* AppDelegate.swift */; };
-		F13EB53A1E61776600E8D747 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13EB5391E61776600E8D747 /* ViewController.swift */; };
+		F13EB53A1E61776600E8D747 /* MealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13EB5391E61776600E8D747 /* MealViewController.swift */; };
 		F13EB53D1E61776600E8D747 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F13EB53B1E61776600E8D747 /* Main.storyboard */; };
 		F13EB53F1E61776700E8D747 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F13EB53E1E61776700E8D747 /* Assets.xcassets */; };
 		F13EB5421E61776700E8D747 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F13EB5401E61776700E8D747 /* LaunchScreen.storyboard */; };
 		F13EB54D1E61776700E8D747 /* FoodTrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13EB54C1E61776700E8D747 /* FoodTrackerUITests.swift */; };
 		F13EB5581E65F7D500E8D747 /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13EB5571E65F7D500E8D747 /* RatingControl.swift */; };
+		F145FCC11F61594400A0EC38 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = F145FCC01F61594400A0EC38 /* Meal.swift */; };
+		F15FB8BC1F61735C00C32722 /* MealTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15FB8BB1F61735C00C32722 /* MealTableViewCell.swift */; };
+		F15FB8BE1F61783A00C32722 /* MealTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15FB8BD1F61783A00C32722 /* MealTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,7 +32,7 @@
 /* Begin PBXFileReference section */
 		F13EB5341E61776600E8D747 /* FoodTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F13EB5371E61776600E8D747 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F13EB5391E61776600E8D747 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F13EB5391E61776600E8D747 /* MealViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealViewController.swift; sourceTree = "<group>"; };
 		F13EB53C1E61776600E8D747 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F13EB53E1E61776700E8D747 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F13EB5411E61776700E8D747 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -38,6 +41,9 @@
 		F13EB54C1E61776700E8D747 /* FoodTrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodTrackerUITests.swift; sourceTree = "<group>"; };
 		F13EB54E1E61776700E8D747 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F13EB5571E65F7D500E8D747 /* RatingControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
+		F145FCC01F61594400A0EC38 /* Meal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
+		F15FB8BB1F61735C00C32722 /* MealTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealTableViewCell.swift; sourceTree = "<group>"; };
+		F15FB8BD1F61783A00C32722 /* MealTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,10 +86,13 @@
 			isa = PBXGroup;
 			children = (
 				F13EB5371E61776600E8D747 /* AppDelegate.swift */,
-				F13EB5391E61776600E8D747 /* ViewController.swift */,
+				F13EB5391E61776600E8D747 /* MealViewController.swift */,
 				F13EB53B1E61776600E8D747 /* Main.storyboard */,
-				F13EB5571E65F7D500E8D747 /* RatingControl.swift */,
+				F15FB8BD1F61783A00C32722 /* MealTableViewController.swift */,
+				F145FCC01F61594400A0EC38 /* Meal.swift */,
+				F15FB8BB1F61735C00C32722 /* MealTableViewCell.swift */,
 				F13EB53E1E61776700E8D747 /* Assets.xcassets */,
+				F13EB5571E65F7D500E8D747 /* RatingControl.swift */,
 				F13EB5401E61776700E8D747 /* LaunchScreen.storyboard */,
 				F13EB5431E61776700E8D747 /* Info.plist */,
 			);
@@ -144,7 +153,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "Jussi Vesa";
 				TargetAttributes = {
 					F13EB5331E61776600E8D747 = {
@@ -202,9 +211,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F145FCC11F61594400A0EC38 /* Meal.swift in Sources */,
 				F13EB5581E65F7D500E8D747 /* RatingControl.swift in Sources */,
-				F13EB53A1E61776600E8D747 /* ViewController.swift in Sources */,
+				F13EB53A1E61776600E8D747 /* MealViewController.swift in Sources */,
 				F13EB5381E61776600E8D747 /* AppDelegate.swift in Sources */,
+				F15FB8BE1F61783A00C32722 /* MealTableViewController.swift in Sources */,
+				F15FB8BC1F61735C00C32722 /* MealTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,6 +276,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -314,6 +327,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -408,6 +422,7 @@
 				F13EB5531E61776700E8D747 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F13EB5541E61776700E8D747 /* Build configuration list for PBXNativeTarget "FoodTrackerUITests" */ = {
 			isa = XCConfigurationList;
@@ -416,6 +431,7 @@
 				F13EB5561E61776700E8D747 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
