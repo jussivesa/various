@@ -28,6 +28,14 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
         // Handle user input using app delegate callbacks
         nameTextField.delegate = self
         
+        // Set up views if editing an existing Meal.
+        if let meal = meal {
+            navigationItem.title = meal.name
+            nameTextField.text   = meal.name
+            photoImageView.image = meal.photo
+            ratingControl.rating = meal.rating
+        }
+        
         // Enable the Save button only if the text field has a valid Meal name.
         updateSaveButtonState()
     }
@@ -96,7 +104,19 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
     
     @IBOutlet weak var cancel: UIBarButtonItem!
     @IBAction func cancel(_ sender: UIBarButtonItem) {
-        dismiss(animated: true, completion: nil)
+        // Depending on style of presentation (modal or push presentation), this view controller needs to be dismissed in two different ways.
+        // In other words meal detail scene is presented by the user tapping the Add button
+        let isPresentingInAddMealMode = presentingViewController is UINavigationController
+        
+        if isPresentingInAddMealMode {
+            dismiss(animated: true, completion: nil)
+        // called if the user is editing an existing meal
+        } else if let owningNavigationController = navigationController {
+            owningNavigationController.popViewController(animated: true)
+        } else {
+            fatalError("The MealViewController is not inside a navigation controller.")
+        }
+        
     }
     
     

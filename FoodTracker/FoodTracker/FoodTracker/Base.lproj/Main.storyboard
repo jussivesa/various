@@ -38,8 +38,8 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="iJf-SS-9wH" customClass="RatingControl" customModule="FoodTracker" customModuleProvider="target">
-                                            <rect key="frame" x="98" y="37" width="252" height="36"/>
+                                        <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="iJf-SS-9wH" customClass="RatingControl" customModule="FoodTracker" customModuleProvider="target">
+                                            <rect key="frame" x="98" y="37" width="212" height="36"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="size" keyPath="starSize">
@@ -53,6 +53,7 @@
                                     <outlet property="nameLabel" destination="vfK-IG-XGX" id="DFm-mC-njB"/>
                                     <outlet property="photoImageView" destination="9H6-pY-eH6" id="kLP-ES-Sbu"/>
                                     <outlet property="ratingControl" destination="iJf-SS-9wH" id="Gxa-Dr-UwW"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="ShowDetail" id="dqF-Ys-prd"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -64,7 +65,7 @@
                     <navigationItem key="navigationItem" title="Your Meals" id="lKf-LZ-6Ol">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="ccZ-qX-Qxn">
                             <connections>
-                                <segue destination="WHS-zv-2pC" kind="show" id="egA-bB-u7L"/>
+                                <segue destination="WHS-zv-2pC" kind="show" identifier="AddItem" id="egA-bB-u7L"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -198,10 +199,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8gT-Qh-HUP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1119" y="55"/>
+            <point key="canvasLocation" x="1114" y="407"/>
         </scene>
     </scenes>
     <resources>
         <image name="defaultPhoto" width="320" height="320"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="dqF-Ys-prd"/>
+    </inferredMetricsTieBreakers>
 </document>
