@@ -14,8 +14,7 @@ class MealTableViewController: UITableViewController {
     //MARK: Properties
     
     // Default, an empty array of Meal objects
-    var meals = [Meal]()
-    
+    var meals = [Meal]()    
     
 
     override func viewDidLoad() {
@@ -24,14 +23,16 @@ class MealTableViewController: UITableViewController {
         // Use the edit button item provided by the table view controller.
         navigationItem.leftBarButtonItem = editButtonItem
         
-        // Load the sample data.
-        loadSampleMeals()
+        // Load any saved meals, otherwise load sample data.
+        if let savedMeals = loadMeals() {
+            meals += savedMeals
+        } else {
+            // Load the sample data.
+            loadSampleMeals()
+        }
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
     override func didReceiveMemoryWarning() {
@@ -88,8 +89,11 @@ class MealTableViewController: UITableViewController {
         if editingStyle == .delete {
             // Delete the row from the data source
             meals.remove(at: indexPath.row)
+            // And save the data as item is deleted
+            saveMeals()
             // deletes the corresponding row from the table view (UI only)
             tableView.deleteRows(at: [indexPath], with: .fade)
+            
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
@@ -153,30 +157,45 @@ class MealTableViewController: UITableViewController {
         let photo3 = UIImage(named: "meal3")
         let photo4 = UIImage(named: "meal4")
         let photo5 = UIImage(named: "meal5")
+        let photo6 = UIImage(named: "meal6")
         
-        guard let meal1 = Meal(name: "Deer Filé", photo: photo1, rating: 4) else {
+        guard let meal1 = Meal(name: "Deer Filé", photo: photo1, rating: 4, body: "This meal was wonderful!", date: nil) else {
             fatalError("Unable to instantiate meal1")
         }
         
-        guard let meal2 = Meal(name: "Mac n' Cheese", photo: photo2, rating: 2) else {
+        guard let meal2 = Meal(name: "Mac n' Cheese", photo: photo2, rating: 2, body: "Superb", date: nil) else {
             fatalError("Unable to instantiate meal2")
         }
         
-        guard let meal3 = Meal(name: "Pulled Pork Pasta", photo: photo3, rating: 3) else {
-            fatalError("Unable to instantiate meal2")
+        guard let meal3 = Meal(name: "Pulled Pork Pasta", photo: photo3, rating: 3, body: "Nah not so good if I recal correctly..", date: nil) else {
+            fatalError("Unable to instantiate meal3")
         }
         
-        guard let meal4 = Meal(name: "Pizza Mamma Mia", photo: photo4, rating: 5) else {
-            fatalError("Unable to instantiate meal2")
+        guard let meal4 = Meal(name: "Pizza Mamma Mia", photo: photo4, rating: 5, body: "Simple, lovely!", date: nil) else {
+            fatalError("Unable to instantiate meal4")
         }
         
-        guard let meal5 = Meal(name: "Cold Porridge", photo: photo5, rating: 1) else {
-            fatalError("Unable to instantiate meal2")
+        guard let meal5 = Meal(name: "Cold Porridge", photo: photo5, rating: 1, body: "Nono.. not good.", date: nil) else {
+            fatalError("Unable to instantiate meal5")
+        }
+        guard let meal6 = Meal(name: "Potatoes", photo: photo6, rating: 4, body: "Taysty! Yam", date: nil) else {
+            fatalError("Unable to instantiate meal6")
         }
 
+        
         // Add to array
-        meals += [meal1, meal2, meal3, meal4, meal5]
+        meals += [meal1, meal2, meal3, meal4, meal5, meal6]
 
+    }
+    
+    private func saveMeals() {
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(meals, toFile: Meal.ArchiveURL.path)
+        
+        if isSuccessfulSave {
+            os_log("Meals successfully saved.", log: OSLog.default, type: .debug)
+        } else {
+            os_log("Failed to save meals...", log: OSLog.default, type: .error)
+        }
     }
     
     //MARK: Actions
@@ -187,6 +206,7 @@ class MealTableViewController: UITableViewController {
             // new meal will be inserted, and stores it in a local constant called newIndexPath.
             
             // This code checks whether a row in the table view is selected. If it is, that means a user tapped one of the table views cells to edit a meal
+            
             // Editing meal
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
                 // Update an existing meal.
@@ -198,7 +218,16 @@ class MealTableViewController: UITableViewController {
                 meals.append(meal)
                 tableView.insertRows(at: [newIndexPath], with: .automatic)
             }
+            
+            // Save the meals nontheless new or edited
+            saveMeals()
         }
     }
-
+    
+    // This method has a return type of an optional array of Meal objects, meaning that it might return an array of Meal objects or might return nothing (nil).
+    private func loadMeals() -> [Meal]? {
+        // This method attempts to unarchive the object stored at the path Meal.ArchiveURL.path and downcast that object to an array of Meal objects
+        return NSKeyedUnarchiver.unarchiveObject(withFile: Meal.ArchiveURL.path) as? [Meal]
+    }
+    
 }

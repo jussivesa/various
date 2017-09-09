@@ -9,14 +9,16 @@
 import UIKit
 import os.log // the unified logging system gives you more control over when messages appear and how they are saved.
 
-class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class MealViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     //MARK: Properties
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var ratingControl: RatingControl!
-    
+    @IBOutlet weak var bodyTextView: UITextView!
+    @IBOutlet weak var datePicker: UIDatePicker!
+        
     /*
      This value is either passed by `MealTableViewController` in `prepare(for:sender:)`
      or constructed as part of adding a new meal.
@@ -27,6 +29,7 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
         super.viewDidLoad()
         // Handle user input using app delegate callbacks
         nameTextField.delegate = self
+        bodyTextView.delegate = self
         
         // Set up views if editing an existing Meal.
         if let meal = meal {
@@ -34,6 +37,8 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
             nameTextField.text   = meal.name
             photoImageView.image = meal.photo
             ratingControl.rating = meal.rating
+            bodyTextView.text = meal.body
+            
         }
         
         // Enable the Save button only if the text field has a valid Meal name.
@@ -52,7 +57,6 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
         return true
     }
     
-
     func textFieldDidEndEditing(_ textField: UITextField) {
         // foodNameLabel.text = textField.text // not in use anymore
         
@@ -62,8 +66,21 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
         updateSaveButtonState()
         navigationItem.title = textField.text
     }
- 
     
+    //MARK: UITextViewDelegate
+    func textViewShouldReturn(_ textView: UITextView) -> Bool {
+        // Hide keyboard
+        textView.resignFirstResponder()
+        return true
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        // Disable the Save button while editing.
+        saveButton.isEnabled = false
+        // Update state
+        updateSaveButtonState()
+    }
+ 
     //MARK: UIImagePickerControllerDelegate
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         //Dissmiss the picker if user cancels
@@ -134,9 +151,10 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
         let name = nameTextField.text ?? ""
         let photo = photoImageView.image
         let rating = ratingControl.rating
-        
+        let body = bodyTextView.text ?? ""
+        // let date = datePicker.date ?? ""
         // Set the meal to be passed to MealTableViewController after the unwind segue.
-        meal = Meal(name: name, photo: photo, rating: rating)
+        meal = Meal(name: name, photo: photo, rating: rating, body: body, date: "not-set")
     }
     
     //MARK: Private Methods
@@ -146,6 +164,7 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
         let text = nameTextField.text ?? ""
         saveButton.isEnabled = !text.isEmpty
     }
+    
 
 }
 

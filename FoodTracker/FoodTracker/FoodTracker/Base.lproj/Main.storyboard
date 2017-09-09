@@ -27,7 +27,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="89.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="9H6-pY-eH6">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="9H6-pY-eH6">
                                             <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
@@ -39,11 +39,11 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="iJf-SS-9wH" customClass="RatingControl" customModule="FoodTracker" customModuleProvider="target">
-                                            <rect key="frame" x="98" y="37" width="212" height="36"/>
+                                            <rect key="frame" x="98" y="37" width="180" height="36"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="size" keyPath="starSize">
-                                                    <size key="value" width="40" height="40"/>
+                                                <userDefinedRuntimeAttribute type="size" keyPath="rateIconSize">
+                                                    <size key="value" width="34" height="34"/>
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </stackView>
@@ -64,6 +64,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Your Meals" id="lKf-LZ-6Ol">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="ccZ-qX-Qxn">
+                            <color key="tintColor" red="1" green="0.83529411764705885" blue="0.17254901960784313" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <connections>
                                 <segue destination="WHS-zv-2pC" kind="show" identifier="AddItem" id="egA-bB-u7L"/>
                             </connections>
@@ -86,68 +87,130 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="0hc-Eh-bKn">
-                                <rect key="frame" x="36" y="80" width="303" height="417.5"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OuM-cp-eqf">
+                                <rect key="frame" x="21" y="69" width="333" height="593"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter meal name..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hH2-kc-Qq3">
-                                        <rect key="frame" x="81" y="0.0" width="141" height="30"/>
-                                        <color key="textColor" red="1" green="0.83529411764705885" blue="0.17254901960784313" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
-                                    </textField>
-                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="cwp-yT-cjb">
-                                        <rect key="frame" x="0.0" y="38" width="303" height="303"/>
-                                        <gestureRecognizers/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="cwp-yT-cjb" secondAttribute="height" multiplier="1:1" id="P4C-en-Ffg"/>
-                                        </constraints>
-                                        <connections>
-                                            <outletCollection property="gestureRecognizers" destination="NZa-nT-i3w" appends="YES" id="BbP-mj-KAV"/>
-                                        </connections>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rate your meal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fLw-dF-HII">
-                                        <rect key="frame" x="94.5" y="349" width="114" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="1" green="0.83529411764705885" blue="0.17254901960784313" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="kp8-d5-6uN" customClass="RatingControl" customModule="FoodTracker" customModuleProvider="target">
-                                        <rect key="frame" x="45.5" y="377.5" width="212" height="40"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="size" keyPath="starSize">
-                                                <size key="value" width="40" height="40"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="starCount">
-                                                <integer key="value" value="5"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="0hc-Eh-bKn">
+                                        <rect key="frame" x="5" y="1" width="323" height="739"/>
+                                        <subviews>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter meal name..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hH2-kc-Qq3">
+                                                <rect key="frame" x="11.5" y="0.0" width="300" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="300" id="29d-xZ-K9p"/>
+                                                    <constraint firstAttribute="height" constant="30" id="BVc-BT-seF"/>
+                                                </constraints>
+                                                <color key="textColor" red="1" green="0.83529411764705885" blue="0.17254901960784313" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                            </textField>
+                                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="cwp-yT-cjb">
+                                                <rect key="frame" x="1.5" y="38" width="320" height="320"/>
+                                                <gestureRecognizers/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="cwp-yT-cjb" secondAttribute="height" multiplier="1:1" id="P4C-en-Ffg"/>
+                                                </constraints>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="NZa-nT-i3w" appends="YES" id="BbP-mj-KAV"/>
+                                                </connections>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rate your meal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fLw-dF-HII">
+                                                <rect key="frame" x="104.5" y="366" width="114" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="1" green="0.83529411764705885" blue="0.17254901960784313" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="kp8-d5-6uN" customClass="RatingControl" customModule="FoodTracker" customModuleProvider="target">
+                                                <rect key="frame" x="45.5" y="394.5" width="232" height="44"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="starCount">
+                                                        <integer key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </stackView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Give description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dyX-ZQ-DfI">
+                                                <rect key="frame" x="99.5" y="446.5" width="124.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="1" green="0.83529411760000005" blue="0.17254901959999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textView clipsSubviews="YES" contentMode="scaleToFill" pagingEnabled="YES" indicatorStyle="white" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="0G1-nU-Ea1">
+                                                <rect key="frame" x="41.5" y="475" width="240" height="128"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="240" id="ROq-uU-SVI"/>
+                                                    <constraint firstAttribute="height" constant="128" id="vh5-KZ-tBi"/>
+                                                </constraints>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                            </textView>
+                                            <textView clipsSubviews="YES" contentMode="scaleToFill" pagingEnabled="YES" indicatorStyle="white" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wcn-ZY-Gop" userLabel="Spacer Not In Use Text View">
+                                                <rect key="frame" x="41.5" y="611" width="240" height="128"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="240" id="18B-03-AVE"/>
+                                                    <constraint firstAttribute="height" constant="128" id="hcO-yF-V3o"/>
+                                                </constraints>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                            </textView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3E8-LL-2fG">
+                                                <rect key="frame" x="143.5" y="611" width="36" height="20.5"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="1" green="0.83529411760000005" blue="0.17254901959999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="iRy-1M-Bv3">
+                                                <rect key="frame" x="1.5" y="639.5" width="320" height="216"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <date key="date" timeIntervalSinceReferenceDate="526639603.06303501">
+                                                    <!--2017-09-09 08:46:43 +0000-->
+                                                </date>
+                                            </datePicker>
+                                        </subviews>
+                                        <variation key="default">
+                                            <mask key="subviews">
+                                                <exclude reference="3E8-LL-2fG"/>
+                                                <exclude reference="iRy-1M-Bv3"/>
+                                            </mask>
+                                        </variation>
                                     </stackView>
                                 </subviews>
-                            </stackView>
+                                <constraints>
+                                    <constraint firstItem="0hc-Eh-bKn" firstAttribute="centerX" secondItem="OuM-cp-eqf" secondAttribute="centerX" id="2MT-UC-ZO2"/>
+                                    <constraint firstAttribute="trailing" secondItem="0hc-Eh-bKn" secondAttribute="trailing" constant="5" id="3WL-K8-GfN"/>
+                                    <constraint firstAttribute="bottom" secondItem="0hc-Eh-bKn" secondAttribute="bottom" constant="5" id="ARC-ME-lbU"/>
+                                    <constraint firstItem="0hc-Eh-bKn" firstAttribute="top" secondItem="OuM-cp-eqf" secondAttribute="top" constant="1" id="LiK-KB-ker"/>
+                                    <constraint firstItem="0hc-Eh-bKn" firstAttribute="leading" secondItem="OuM-cp-eqf" secondAttribute="leading" constant="5" id="dBy-Qa-KKj"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="0hc-Eh-bKn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Gh1-Pe-yNL"/>
-                            <constraint firstItem="0hc-Eh-bKn" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="16" id="R5w-4y-Cfc"/>
-                            <constraint firstItem="0hc-Eh-bKn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="T98-qA-yUN"/>
-                            <constraint firstItem="0hc-Eh-bKn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ZCs-Ke-sfp"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="0hc-Eh-bKn" secondAttribute="trailing" constant="20" id="qlO-aK-M3Z"/>
-                            <constraint firstItem="0hc-Eh-bKn" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="yJs-LY-eEc"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="OuM-cp-eqf" secondAttribute="bottom" constant="5" id="6d2-f0-KHl"/>
+                            <constraint firstItem="OuM-cp-eqf" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="5" id="E2o-xo-e3a"/>
+                            <constraint firstItem="OuM-cp-eqf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="5" id="irn-c8-RId"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="OuM-cp-eqf" secondAttribute="trailing" constant="5" id="yAN-wy-laG"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="New Meal" id="tle-oA-1qe">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="ecC-Vi-fDh">
+                            <color key="tintColor" red="1" green="0.83529411764705885" blue="0.17254901960784313" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <connections>
                                 <action selector="cancel:" destination="BYZ-38-t0r" id="m7n-Ml-f1W"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="dyq-P6-aGa">
+                            <color key="tintColor" red="1" green="0.83529411764705885" blue="0.17254901960784313" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <connections>
                                 <segue destination="Goh-8n-J8f" kind="unwind" unwindAction="unwindToMealListWithSender:" id="rbV-tt-clK"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="bodyTextView" destination="0G1-nU-Ea1" id="412-Lj-1xR"/>
                         <outlet property="cancel" destination="ecC-Vi-fDh" id="gaI-rF-iO8"/>
                         <outlet property="nameTextField" destination="hH2-kc-Qq3" id="nci-AL-Flp"/>
                         <outlet property="photoImageView" destination="cwp-yT-cjb" id="z6w-s1-YoO"/>
@@ -163,7 +226,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1980" y="55"/>
+            <point key="canvasLocation" x="1980" y="54.422788605697157"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="b7w-um-G3X">
